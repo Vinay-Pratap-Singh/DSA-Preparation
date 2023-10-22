@@ -13,6 +13,7 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
 - [Bit manipulation](#bit-manipulation)
   - [01 Add binary](#01-add-binary)
   - [02 Reverse Bits](#02-reverse-bits)
+  - [03 Number of 1 Bits](#03-number-of-1-bits)
 
 ## Bit manipulation
 
@@ -43,5 +44,28 @@ function reverseBits(n: number): number {
   const bits = n.toString(2);
   const bitDigits = ("0".repeat(32 - bits.length) + bits).split("");
   return parseInt(bitDigits.reverse().join(""), 2);
+}
+```
+
+### 03 Number of 1 Bits
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/number-of-1-bits/?envType=study-plan-v2&envId=top-interview-150)
+
+Write a function that takes the binary representation of an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
+
+#### Solution
+
+```js
+function hammingWeight(n: number): number {
+  // by using toString method
+  // const nums = n.toString(2).split("");
+  // const filteredNums = nums.filter(num => num === "1");
+  // return filteredNums.length;
+
+  // by using toString in one line
+  return n
+    .toString(2)
+    .split("")
+    .filter((num) => num === "1").length;
 }
 ```
