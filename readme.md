@@ -14,6 +14,7 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [01 Add binary](#01-add-binary)
   - [02 Reverse Bits](#02-reverse-bits)
   - [03 Number of 1 Bits](#03-number-of-1-bits)
+  - [04 Single Number](#04-single-number)
 
 ## Bit manipulation
 
@@ -67,5 +68,23 @@ function hammingWeight(n: number): number {
     .toString(2)
     .split("")
     .filter((num) => num === "1").length;
+}
+```
+
+### 04 Single Number
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/single-number/?envType=study-plan-v2&envId=top-interview-150)
+
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+#### Solution
+
+```js
+function singleNumber(nums: number[]): number {
+  let ans = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    ans = ans ^ nums[i];
+  }
+  return ans;
 }
 ```
