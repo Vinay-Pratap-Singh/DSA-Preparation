@@ -54,20 +54,43 @@ function reverseBits(n: number): number {
 
 Write a function that takes the binary representation of an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
 
-#### Solution
+#### 01 Solution using toString method
 
 ```js
 function hammingWeight(n: number): number {
-  // by using toString method
-  // const nums = n.toString(2).split("");
-  // const filteredNums = nums.filter(num => num === "1");
-  // return filteredNums.length;
-
-  // by using toString in one line
   return n
     .toString(2)
     .split("")
     .filter((num) => num === "1").length;
+}
+```
+
+#### 02 Solution using bit wise and operator
+
+```js
+function hammingWeight(n: number): number {
+  let count = 0;
+  while (n) {
+    n = n & (n - 1);
+    count++;
+  }
+  return count;
+}
+```
+
+#### 03 Solution using bit masking and right shift operator
+
+```js
+function hammingWeight(n: number): number {
+  let mask = 1;
+  let count = 0;
+  for (let i = 0; i < 32; i++) {
+    if ((n & mask) !== 0) {
+      count++;
+    }
+    mask = mask << 1;
+  }
+  return count;
 }
 ```
 
