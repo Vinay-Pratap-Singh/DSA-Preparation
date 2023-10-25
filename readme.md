@@ -15,6 +15,7 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [02 Reverse Bits](#02-reverse-bits)
   - [03 Number of 1 Bits](#03-number-of-1-bits)
   - [04 Single Number](#04-single-number)
+  - [05 Single Number II](#05-single-number-ii)
 
 ## Bit manipulation
 
@@ -100,7 +101,7 @@ function hammingWeight(n: number): number {
 
 Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
 
-#### Solution
+#### Solution by using XOR operator
 
 ```js
 function singleNumber(nums: number[]): number {
@@ -109,5 +110,53 @@ function singleNumber(nums: number[]): number {
     ans = ans ^ nums[i];
   }
   return ans;
+}
+```
+
+#### Solution by using Map
+
+```js
+function singleNumber(nums: number[]): number {
+  let myMap = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (myMap.has(nums[i])) {
+      myMap.set(nums[i], myMap.get(nums[i]) + 1);
+    } else {
+      myMap.set(nums[i], 0);
+    }
+  }
+
+  for (let item of myMap) {
+    if (item[1] === 0) {
+      return item[0];
+    }
+  }
+}
+```
+
+### 05 Single Number II
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/single-number-ii/description/?envType=study-plan-v2&envId=top-interview-150)
+
+Given an integer array nums where every element appears three times except for one, which appears exactly once. Find the single element and return it.
+
+#### Solution by using Map
+
+```js
+function singleNumber(nums: number[]): number {
+  let myMap = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (myMap.has(nums[i])) {
+      myMap.set(nums[i], myMap.get(nums[i]) + 1);
+    } else {
+      myMap.set(nums[i], 0);
+    }
+  }
+
+  for (let item of myMap) {
+    if (item[1] === 0) {
+      return item[0];
+    }
+  }
 }
 ```
