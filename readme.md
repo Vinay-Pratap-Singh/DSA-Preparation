@@ -16,6 +16,7 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [03 Number of 1 Bits](#03-number-of-1-bits)
   - [04 Single Number](#04-single-number)
   - [05 Single Number II](#05-single-number-ii)
+  - [06 Bitwise AND of Numbers Range](#06-bitwise-and-of-numbers-range)
 
 ## Bit manipulation
 
@@ -158,5 +159,24 @@ function singleNumber(nums: number[]): number {
       return item[0];
     }
   }
+}
+```
+
+### 06 Bitwise AND of Numbers Range
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/bitwise-and-of-numbers-range/?envType=study-plan-v2&envId=top-interview-150)
+
+Given two integers left and right that represent the range [left, right], return the bitwise AND of all numbers in this range, inclusive.
+
+#### Solution
+
+```js
+function rangeBitwiseAnd(left: number, right: number): number {
+  if (left * 2 <= right) return 0;
+  let output = left;
+  for (let i = left + 1; i <= right; i++) {
+    output = output & i;
+  }
+  return output;
 }
 ```
