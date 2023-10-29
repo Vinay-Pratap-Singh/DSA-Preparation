@@ -17,6 +17,8 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [04 Single Number](#04-single-number)
   - [05 Single Number II](#05-single-number-ii)
   - [06 Bitwise AND of Numbers Range](#06-bitwise-and-of-numbers-range)
+- [Math](#math)
+  - [Palindrome Number](#01-palindrome-number)
 
 ## Bit manipulation
 
@@ -178,5 +180,28 @@ function rangeBitwiseAnd(left: number, right: number): number {
     output = output & i;
   }
   return output;
+}
+```
+
+## Math
+
+### 01 Palindrome Number
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/palindrome-number/?envType=study-plan-v2&envId=top-interview-150)
+
+Given an integer x, return true if x is a
+palindrome, and false otherwise.
+
+#### Solution
+
+```js
+function isPalindrome(x: number): boolean {
+  const stringNumber = String(x);
+  const reversedStringNumber = stringNumber.split("").reverse().join("");
+  if (stringNumber === reversedStringNumber) {
+    return true;
+  } else {
+    return false;
+  }
 }
 ```
