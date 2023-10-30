@@ -18,7 +18,8 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [05 Single Number II](#05-single-number-ii)
   - [06 Bitwise AND of Numbers Range](#06-bitwise-and-of-numbers-range)
 - [Math](#math)
-  - [Palindrome Number](#01-palindrome-number)
+  - [01 Palindrome Number](#01-palindrome-number)
+  - [02 Plus One](#02-plus-one)
 
 ## Bit manipulation
 
@@ -203,5 +204,22 @@ function isPalindrome(x: number): boolean {
   } else {
     return false;
   }
+}
+```
+
+### 02 Plus One
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/plus-one/?envType=study-plan-v2&envId=top-interview-150)
+
+You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+
+#### Solution
+
+```js
+function plusOne(digits: number[]): number[] {
+  const nums = BigInt(digits.join("")) + BigInt(1);
+  return String(nums)
+    .split("")
+    .map((num) => Number(num));
 }
 ```
