@@ -20,6 +20,7 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
 - [Math](#math)
   - [01 Palindrome Number](#01-palindrome-number)
   - [02 Plus One](#02-plus-one)
+  - [03 Factorial Trailing Zeroes](#03-factorial-trailing-zeroes)
 
 ## Bit manipulation
 
@@ -221,5 +222,36 @@ function plusOne(digits: number[]): number[] {
   return String(nums)
     .split("")
     .map((num) => Number(num));
+}
+```
+
+### 03 Factorial Trailing Zeroes
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/factorial-trailing-zeroes/?envType=study-plan-v2&envId=top-interview-150)
+
+Given an integer n, return the number of trailing zeroes in n!.
+
+#### Solution
+
+```js
+function trailingZeroes(n: number): number {
+  let factorial = BigInt(1);
+  if (n === 0) {
+    return 0;
+  }
+  for (let i = n; i >= 1; i--) {
+    factorial *= BigInt(i);
+  }
+
+  const factorialString = String(factorial);
+  let count = 0;
+  for (let i = factorialString.length - 1; i >= 0; i--) {
+    if (factorialString[i] === "0") {
+      count++;
+    } else {
+      break;
+    }
+  }
+  return count;
 }
 ```
