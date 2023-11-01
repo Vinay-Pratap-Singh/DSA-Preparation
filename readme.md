@@ -21,6 +21,7 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [01 Palindrome Number](#01-palindrome-number)
   - [02 Plus One](#02-plus-one)
   - [03 Factorial Trailing Zeroes](#03-factorial-trailing-zeroes)
+  - [04 Sqrt(x)](#04-sqrtx)
 
 ## Bit manipulation
 
@@ -253,5 +254,25 @@ function trailingZeroes(n: number): number {
     }
   }
   return count;
+}
+```
+
+### 04 Sqrt(x)
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/sqrtx/?envType=study-plan-v2&envId=top-interview-150)
+
+Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
+
+#### Solution
+
+```js
+function mySqrt(x: number): number {
+  for (let i = 1; i <= x / 2 + 1; i++) {
+    if (i * i === x) {
+      return i;
+    } else if (i * i > x) {
+      return i - 1;
+    }
+  }
 }
 ```
