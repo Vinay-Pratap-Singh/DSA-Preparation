@@ -22,6 +22,7 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [02 Plus One](#02-plus-one)
   - [03 Factorial Trailing Zeroes](#03-factorial-trailing-zeroes)
   - [04 Sqrt(x)](#04-sqrtx)
+  - [05 Pow(x, n)](#05-powx-n)
 
 ## Bit manipulation
 
@@ -274,5 +275,27 @@ function mySqrt(x: number): number {
       return i - 1;
     }
   }
+}
+```
+
+### 05 Pow(x, n)
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/powx-n/?envType=study-plan-v2&envId=top-interview-150)
+
+Implement pow(x, n), which calculates x raised to the power n (i.e., x raised power n).
+
+#### Solution using double astricks
+
+```js
+function myPow(x: number, n: number): number {
+  return x ** n;
+}
+```
+
+#### Solution using Math method
+
+```js
+function myPow(x: number, n: number): number {
+  return Math.pow(x, n);
 }
 ```
