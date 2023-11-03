@@ -23,6 +23,8 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [03 Factorial Trailing Zeroes](#03-factorial-trailing-zeroes)
   - [04 Sqrt(x)](#04-sqrtx)
   - [05 Pow(x, n)](#05-powx-n)
+- [Array](#array)
+  - [01 Merge Sorted Array](#01-merge-sorted-array)
 
 ## Bit manipulation
 
@@ -297,5 +299,74 @@ function myPow(x: number, n: number): number {
 ```js
 function myPow(x: number, n: number): number {
   return Math.pow(x, n);
+}
+```
+
+## Array
+
+### 01 Merge Sorted Array
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/merge-sorted-array/?envType=study-plan-v2&envId=top-interview-150)
+
+You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+
+The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+
+#### Solution using sort method
+
+```js
+/**
+ Do not return anything, modify nums1 in-place instead.
+ */
+function merge(nums1: number[], m: number, nums2: number[], n: number): void {
+  nums1.length = m + n;
+  let k = 0;
+
+  if (n) {
+    for (let i = m; i < nums1.length; i++) {
+      nums1[i] = nums2[k];
+      k++;
+    }
+    nums1.sort((a, b) => a - b);
+  }
+}
+```
+
+#### Solution without using sort method
+
+```js
+/**
+ Do not return anything, modify nums1 in-place instead.
+ */
+function merge(nums1: number[], m: number, nums2: number[], n: number): void {
+  const output = [];
+  let i = 0,
+    j = 0;
+  while (i < m && j < n) {
+    if (nums1[i] < nums2[j]) {
+      output.push(nums1[i]);
+      i++;
+    } else {
+      output.push(nums2[j]);
+      j++;
+    }
+  }
+
+  if (i < m) {
+    for (let index = i; index < m; index++) {
+      output.push(nums1[index]);
+    }
+  } else if (j < n) {
+    for (let index = j; index < n; index++) {
+      output.push(nums2[index]);
+    }
+  }
+
+  nums1.length = 0;
+  for (let i = 0; i < output.length; i++) {
+    nums1.push(output[i]);
+  }
 }
 ```
