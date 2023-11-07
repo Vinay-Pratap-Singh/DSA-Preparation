@@ -25,6 +25,7 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [05 Pow(x, n)](#05-powx-n)
 - [Array](#array)
   - [01 Merge Sorted Array](#01-merge-sorted-array)
+  - [02 Remove Element](#02-remove-element)
 
 ## Bit manipulation
 
@@ -368,5 +369,29 @@ function merge(nums1: number[], m: number, nums2: number[], n: number): void {
   for (let i = 0; i < output.length; i++) {
     nums1.push(output[i]);
   }
+}
+```
+
+### 02 Remove Element
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/remove-element/?envType=study-plan-v2&envId=top-interview-150)
+
+Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+
+Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
+
+- Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.
+- Return k.
+
+#### Solution
+
+```js
+function removeElement(nums: number[], val: number): number {
+  const withoutValue = nums.filter((num) => num !== val);
+  for (let i = 0; i < withoutValue.length; i++) {
+    // changing nums array values
+    nums[i] = withoutValue[i];
+  }
+  return withoutValue.length;
 }
 ```
