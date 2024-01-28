@@ -27,6 +27,8 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [01 Merge Sorted Array](#01-merge-sorted-array)
   - [02 Remove Element](#02-remove-element)
   - [03 Remove Duplicates from Sorted Array](#03-remove-duplicates-from-sorted-array)
+  - [04 Remove Duplicates from Sorted Array II](#04-remove-duplicates-from-sorted-array-ii)
+  - [05 Majority Element](#05-majority-element)
 
 ## Bit manipulation
 
@@ -451,5 +453,48 @@ function removeDuplicates(nums: number[]): number {
     }
   }
   return nums.length;
+}
+```
+
+### 05 Majority Element
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/majority-element/description/?envType=study-plan-v2&envId=top-interview-150)
+
+Given an array nums of size n, return the majority element.
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+#### Brute force solution
+
+```js
+function majorityElement(nums: number[]): number {
+  for (let i = 0; i < nums.length; i++) {
+    let count = 1;
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] === nums[j]) {
+        count++;
+      }
+    }
+    if (count > nums.length / 2) return nums[i];
+  }
+}
+```
+
+#### Using Map
+
+```js
+function majorityElement(nums: number[]): number {
+  const myMap = new Map();
+  nums.forEach((num) => {
+    if (myMap.has(num)) {
+      myMap.set(num, myMap.get(num) + 1);
+    } else {
+      myMap.set(num, 1);
+    }
+  });
+  for (const num of myMap) {
+    if (num[1] > nums.length / 2) {
+      return num[0];
+    }
+  }
 }
 ```
