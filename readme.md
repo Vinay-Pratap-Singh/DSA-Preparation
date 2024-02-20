@@ -29,6 +29,8 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [03 Remove Duplicates from Sorted Array](#03-remove-duplicates-from-sorted-array)
   - [04 Remove Duplicates from Sorted Array II](#04-remove-duplicates-from-sorted-array-ii)
   - [05 Majority Element](#05-majority-element)
+  - [06 Rotate Array](#06-rotate-array)
+  - [07 Best Time to Buy and Sell Stock](#07-best-time-to-buy-and-sell-stock)
 
 ## Bit manipulation
 
@@ -496,5 +498,53 @@ function majorityElement(nums: number[]): number {
       return num[0];
     }
   }
+}
+```
+
+### 06 Rotate Array
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/rotate-array/description/?envType=study-plan-v2&envId=top-interview-150)
+
+Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+
+#### Solution
+
+```js
+function rotate(nums: number[], k: number): void {
+  if (k > nums.length) {
+    k = Number(Math.floor(k % nums.length).toFixed(0));
+  }
+  const startIndex = nums.length - k;
+  const removedNums = nums.slice(startIndex);
+  const remainingNums = nums.slice(0, startIndex);
+  nums.length = 0;
+  nums.splice(0, 0, ...removedNums, ...remainingNums);
+}
+```
+
+### 07 Best Time to Buy and Sell Stock
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/?envType=study-plan-v2&envId=top-interview-150)
+
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+#### Solution
+
+```js
+function maxProfit(prices: number[]): number {
+  let minValue = prices[0];
+  let profit = 0;
+  for (let i = 0; i < prices.length; i++) {
+    if (minValue > prices[i]) {
+      minValue = prices[i];
+    } else {
+      profit = Math.max(profit, prices[i] - minValue);
+    }
+  }
+  return profit;
 }
 ```
