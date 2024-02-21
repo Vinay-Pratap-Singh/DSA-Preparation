@@ -548,3 +548,43 @@ function maxProfit(prices: number[]): number {
   return profit;
 }
 ```
+
+### 17 Roman to Integer
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/roman-to-integer/description/?envType=study-plan-v2&envId=top-interview-150)
+
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M
+
+Given a roman numeral, convert it to an integer.
+
+#### Solution
+
+```js
+function romanToInt(s: string): number {
+  let d = {
+    M: 1000,
+    D: 500,
+    C: 100,
+    L: 50,
+    X: 10,
+    V: 5,
+    I: 1,
+  };
+  let n = s.length;
+  let num = 0;
+  let tmpnum = 0;
+  let ci = d[s[n - 1]];
+  let op: "add" | "sub" = "add";
+  for (let i = 0; i < n; i++) {
+    const si = s[n - 1 - i];
+    if (ci !== d[si]) {
+      num = op === "add" ? num + tmpnum : num - tmpnum;
+      op = d[si] < ci ? "sub" : "add";
+      tmpnum = 0;
+      ci = d[si];
+    }
+    tmpnum += ci;
+  }
+  return op === "add" ? num + tmpnum : num - tmpnum;
+}
+```
