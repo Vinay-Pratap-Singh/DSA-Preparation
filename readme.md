@@ -31,6 +31,8 @@ This repository contains my solutions to the LeetCode "Top interview 150". I'm o
   - [05 Majority Element](#05-majority-element)
   - [06 Rotate Array](#06-rotate-array)
   - [07 Best Time to Buy and Sell Stock](#07-best-time-to-buy-and-sell-stock)
+  - [17 Roman to Integer](#17-roman-to-integer)
+  - [19 Length of Last Word](#19-length-of-last-word)
 
 ## Bit manipulation
 
@@ -586,5 +588,40 @@ function romanToInt(s: string): number {
     tmpnum += ci;
   }
   return op === "add" ? num + tmpnum : num - tmpnum;
+}
+```
+
+### 19 Length of Last Word
+
+#### [Problem Statement ↗️](https://leetcode.com/problems/length-of-last-word/description/?envType=study-plan-v2&envId=top-interview-150)
+
+Given a string s consisting of words and spaces, return the length of the last word in the string.
+
+A word is a maximal substring consisting of non-space characters only.
+
+#### Solution using trim
+
+```js
+function lengthOfLastWord(s: string): number {
+  const myString = s.trim();
+  const myStringArray = myString.split(" ");
+  const lastString = myStringArray[myStringArray.length - 1];
+  return lastString.length;
+}
+```
+
+#### Solution using loop
+
+```js
+function lengthOfLastWord(s: string): number {
+  let length = 0;
+  for (let i = s.length - 1; i >= 0; i--) {
+    if (s[i] !== " ") {
+      length++;
+    } else if (length > 0) {
+      break;
+    }
+  }
+  return length;
 }
 ```
